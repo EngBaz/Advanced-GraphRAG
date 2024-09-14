@@ -1,7 +1,7 @@
 import os
 import streamlit as st
 
-from graphRAG_utilities import configure_graphrag_chain, configure_graphrag_retriever, stream_data
+from utilities import configure_graphrag_chain, configure_graphrag_retriever, stream_data
 from langchain_community.graphs import Neo4jGraph
 from langchain_openai import ChatOpenAI
 from langchain.document_loaders import PyPDFLoader
