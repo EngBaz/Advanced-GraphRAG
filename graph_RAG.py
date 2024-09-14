@@ -35,11 +35,7 @@ def main():
                                     type="password",
                                     )
         os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
-        
-        #selected_format = st.selectbox(label="Select file format", options=["...", "pdf", "csv", "txt"])
-        
-        #uploaded_file = st.file_uploader("Upload a file", type=[selected_format])
-    
+
     if OPENAI_API_KEY:
         
         llm = ChatOpenAI(model="gpt-4o-mini", temperature=0, openai_api_key=OPENAI_API_KEY)
