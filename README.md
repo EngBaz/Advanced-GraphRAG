@@ -16,7 +16,7 @@ The project showcases the implementation of a custom chat assistant that leverag
 ## Setup
 To setup this project on your local machine, follow the below steps:
 
-1. Clone this repository: <code>git clone https://github.com/EngBaz/Graph-RAG-System</code>
+1. Clone this repository: <code>git clone github.com/EngBaz/Graph-RAG-System</code>
 
 2. Create a virtual enviromnent
    ```console
@@ -25,11 +25,13 @@ To setup this project on your local machine, follow the below steps:
     ```
 3. Install the required dependencies by running <code>pip install -r requirements.txt</code>
 
-4. Obtain an API key from OpenAI and Cohere AI. Store the Cohere API key in a <code>.env</code> file with the corresponsding name <code>COHERE_API_KEY</code>.
+4. Create a folder and name it <code>documents</code> to put the PDF file
 
-5. Obtain Noe4j <code>url</code>, <code>username</code> and <code>password</code>
+5. Obtain an API key from OpenAI and Cohere AI. Store the Cohere API key in a <code>.env</code> file with the corresponsding name <code>COHERE_API_KEY</code>.
+
+6. Obtain Noe4j <code>url</code>, <code>username</code> and <code>password</code>
     
-6. Note that the project is built using OpenAI GPT-4. Thus, it is necessary to have an OpenAI API key. Otherwise, for the use of open-source LLMs on huggingface, import your model using the steps below.
+7. Note that the project is built using OpenAI GPT-4. Thus, it is necessary to have an OpenAI API key. Otherwise, for the use of open-source LLMs on huggingface, import your model using the steps below.
     ```console
     
     $ pip install langchain huggingface_hub
@@ -39,20 +41,18 @@ To setup this project on your local machine, follow the below steps:
 
 ## Usage
 
-To use the conversational agent:
+To use the conversational assistant:
 1. In the terminal, run the streamlit app: <code> streamlit run graph_RAG.py </code>
-2. Select the appropriate format of your file 
-3. Upload your file
-4. Write a specific question about the uploaded file
-5. The agent will process the input and respond with relevant information
+2. Write a specific question about the PDF file
+3. The assistant will process the input and respond with relevant information
 
 ## Implementation
 
-A <code>hybrid search</code> system was developed that uses <code>FAISS (Facebook AI Similarity Search)</code> as a vector database. This approach combines traditional <code>keyword-based</code> search with <code>vector-based</code> search that captures contextual meaning. By merging these methods, the system can deliver more accurate and relevant results. LangChain's <code>EnsembleRetriever</code> tool is used to effectively integrate these two search techniques. A <code>Cohere Rerank</code> model is used after the hybrid search to further improve the ranking of search results.
+A <code>hybrid search</code> system was developed that uses <code>Neo4j</code> as a graph database. This approach combines traditional <code>keyword-based</code> search with <code>vector-based</code> search that captures contextual meaning. By merging these methods, the system can deliver more accurate and relevant results. LangChain's <code>EnsembleRetriever</code> tool is used to effectively integrate these two search techniques. A <code>Cohere Rerank</code> model is used after the hybrid search to further improve the ranking of search results.
 
-1. <code>FAISS (Facebook AI Similarity Search):</code> FAISS is an efficient library designed to search for similar elements in a large collection of vectors. It is characterized by optimized indexing and search algorithms when processing large data sets. In this context, FAISS stores vector embeddings, i.e. mathematical representations of data that capture the semantic meaning and relationships between them.
+1. <code>Neo4j</code> is a highly scalable, native graph database designed to store, manage, and analyze interconnected data. Unlike traditional databases, Neo4j represents data as nodes, relationships, and properties, which allows for more natural modeling of complex structures and relationships. This structure excels in use cases where the relationships between data points are as important as the knowledge graphs.
    
-2. <code>Keyword search:</code> Conventional search methods focus on finding exact keywords or phrases to retrieve results. This method is very effective for structured or specific queries, but can miss the broader context and meaning behind the words, especially if the phrases or synonyms are different.
+2. <code>Keyword search:</code> A traditional search method that focuses on finding exact keywords or phrases to retrieve results. This method is very effective for structured or specific queries, but can miss the broader context and meaning behind the words, especially if the phrases or synonyms are different.
 
 3. <code>Vector search:</code> Unlike keyword search, vector search is based on embeddings that represent words, phrases or entire documents as vectors in a multidimensional space. By capturing the semantic relationships between the data, vector search finds results based on contextual similarity, even if the exact keywords are not used.
 
@@ -60,7 +60,7 @@ A <code>hybrid search</code> system was developed that uses <code>FAISS (Faceboo
 
 5. <code>LangChain’s EnsembleRetriever:</code> The EnsembleRetriever is a special tool within LangChain that enables the combination of several search mechanisms (e.g. keyword and vector search). It intelligently combines the strengths of both methods and ensures that the search results are more comprehensive and contextualized.
 
-6. <code>Cohere Rerank Model:</code> The Cohere Rerank Model is a machine learning-based tool that further improves the ranking of search results. After the hybrid search system has retrieved the initial results (from both keyword and vector searches), the Cohere model is applied to re-rank these results based on relevance. By analyzing the semantic relationship between the search query and the search results, it assigns a higher score to those that best match the intent of the search query. This final reordering ensures that the most contextually appropriate and useful information is prioritized, improving the overall quality of results.
+6. <code>Cohere Rerank Model:</code> The Cohere Rerank Model is a tool that further improves the ranking of search results. After the hybrid search system has retrieved the initial results (from both keyword and vector searches), the Cohere model is applied to re-rank these results based on relevance. By analyzing the semantic relationship between the search query and the search results, it assigns a higher score to those that best match the intent of the search query. This final reordering ensures that the most contextually appropriate and useful information is prioritized, improving the overall quality of results.
 
 ## References
 
