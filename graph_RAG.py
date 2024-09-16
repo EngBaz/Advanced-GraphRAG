@@ -42,7 +42,7 @@ def main():
             
         st.title("Welcome to GraphRAG!🤖")
         
-        pdf = PyPDFLoader("documents\Internship_Report.pdf")
+        pdf = PyPDFLoader("documents\name of your pdf file.pdf")
         loader = pdf.load()
         data = " ".join([doc.page_content for doc in loader])
         
