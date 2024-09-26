@@ -45,21 +45,6 @@ To use the conversational assistant:
 2. Write a specific question about your PDF file
 3. The assistant will process the input and respond with relevant information
 
-## Implementation
-
-A <code>hybrid search</code> system was developed that uses <code>Neo4j</code> as a graph database. This approach combines traditional <code>keyword-based</code> search with <code>vector-based</code> search that captures contextual meaning. By merging these methods, the system can deliver more accurate and relevant results. LangChain's <code>EnsembleRetriever</code> tool is used to effectively integrate these two search techniques. A <code>Cohere Rerank</code> model is used after the hybrid search to further improve the ranking of search results.
-
-1. <code>Neo4j</code> is a highly scalable, native graph database designed to store, manage, and analyze interconnected data. Unlike traditional databases, Neo4j represents data as nodes, relationships, and properties, which allows for more natural modeling of complex structures and relationships. This structure excels in use cases where the relationships between data points are as important as the knowledge graphs.
-   
-2. <code>Keyword search:</code> A traditional search method that focuses on finding exact keywords or phrases to retrieve results. This method is very effective for structured or specific queries, but can miss the broader context and meaning behind the words, especially if the phrases or synonyms are different.
-
-3. <code>Vector search:</code> Unlike keyword search, vector search is based on embeddings that represent words, phrases or entire documents as vectors in a multidimensional space. By capturing the semantic relationships between the data, vector search finds results based on contextual similarity, even if the exact keywords are not used.
-
-4. <code>Hybrid search:</code> This system combines both approaches — keyword search provides precision when exact terms match, while vector search adds context by retrieving results based on meaning and semantics. The hybrid approach aims to improve relevance and handle different types of search queries more robustly.
-
-5. <code>LangChain’s EnsembleRetriever:</code> The EnsembleRetriever is a special tool within LangChain that enables the combination of several search mechanisms (e.g. keyword and vector search). It intelligently combines the strengths of both methods and ensures that the search results are more comprehensive and contextualized.
-
-6. <code>Cohere Rerank Model:</code> The Cohere Rerank Model is a tool that further improves the ranking of search results. After the hybrid search system has retrieved the initial results (from both keyword and vector searches), the Cohere model is applied to re-rank these results based on relevance. By analyzing the semantic relationship between the search query and the search results, it assigns a higher score to those that best match the intent of the search query. This final reordering ensures that the most contextually appropriate and useful information is prioritized, improving the overall quality of results.
 
 ## References
 
